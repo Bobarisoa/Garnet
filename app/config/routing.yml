@@ -1,0 +1,21 @@
+garnet_taxi_be:
+    resource: @GarnetTaxiBeBundle/Controller/
+    type: annotation
+
+garnet_public:
+    resource: "@GarnetPublicBundle/Resources/config/routing.yml"
+    prefix:   /
+
+garnet_cooperative_homepage:
+    resource: @GarnetCooperativeBundle/Controller/
+    type:     annotation
+login:
+    pattern: /login
+    defaults: { _controller: GarnetPublicBundle:Security:login }
+compte_register:
+    pattern: /inscription
+    defaults: { _controller: GarnetPublicBundle:Security:create }
+login_check:
+    pattern: /login_check
+logout:
+    pattern: /logout

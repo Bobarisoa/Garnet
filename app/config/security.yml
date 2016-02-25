@@ -1,0 +1,42 @@
+# app/config/security.yml
+security:
+    encoders:
+        Garnet\PublicBundle\Entity\Compte: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        main:
+            entity: {class: Garnet\PublicBundle\Entity\Compte, property: username}
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern:  ^/login$
+            anonymous:    true
+        main:
+            pattern: ^/        # ^/ = tout ce qui commence par / = tout notre site
+            form_login:                      # On définit notre méthode d'authentification
+                provider:    main  # On lit l'authentification au provider définit plus haut
+                remember_me: true            # On active la possibilité du "Se souvenir de moi" (désactivé par défaut)
+                check_path:  /login_check #
+                default_target_path:  cooperative # url after login
+                login_path:  /login   # url login
+            remember_me:
+                key:         %secret%        # On définit la clé pour le remember_me (%secret% est un parametre de parameters.ini)
+            anonymous:       true          # On autorise les utilisateurs anonymes (non identifiés)
+            logout:
+                path:        /logout  # url logout
+                target:      /login   # after logout
+                invalidate_session: false
+
+    access_control:
+        - { path: ^/registing, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/compte/new, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
