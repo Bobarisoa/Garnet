@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Messages</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Idsrc</th>
+                <td>{{ entity.idSrc }}</td>
+            </tr>
+            <tr>
+                <th>Iddst</th>
+                <td>{{ entity.idDst }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ entity.message }}</td>
+            </tr>
+            <tr>
+                <th>Supprimedst</th>
+                <td>{{ entity.supprimeDst }}</td>
+            </tr>
+            <tr>
+                <th>Supprimesrc</th>
+                <td>{{ entity.supprimeSrc }}</td>
+            </tr>
+            <tr>
+                <th>Lu</th>
+                <td>{{ entity.lu }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('messages') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('messages_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

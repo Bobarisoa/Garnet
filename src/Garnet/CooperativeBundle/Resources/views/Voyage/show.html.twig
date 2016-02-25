@@ -1,0 +1,38 @@
+<h2 style="text-align: center">Detail du voyage le {{ entity.dATEVOYAGE|date('d/m/Y') }}</h2>
+<table class="place">
+    <tr><td colspan="2"></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td></tr>
+</table>
+<fieldset style="margin-top: 65px;">
+    <p>
+        <label>Nombre de Place :</label><span> {{ entity.nBRPLACE }}</span>
+    </p>
+    <p>
+        <label>Frais :</label><span> {{ entity.fRAIS }}</span>
+    </p>
+    <p>
+        <label>Heure de Depart :</label><span> {{ entity.dATEVOYAGE|date('H:i') }}</span>
+    </p>
+    <p>
+        <label>Lieu de depart :</label><span> </span>
+    </p>
+    <p>
+        <label>Lieu d'arriver :</label><span> </span>
+    </p>
+    <p>
+        <label>Numero/nom du voyageurs :</label><span>012345</span>
+    </p>
+</fieldset>
+<fieldset>
+    <legend>Description</legend>
+    <textarea>{{ entity.dESCRIPTION }}</textarea>
+</fieldset>
+<div style="clear: both;"></div>
+<div class="btnAction">
+    <button type="reset" onclick="$('.wrapperDetail').hide()"> Annuler</button>
+    <button type="submit"> Valider</button>
+</div>
+

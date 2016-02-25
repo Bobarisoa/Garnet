@@ -1,0 +1,7 @@
+parameters:
+#    garnet_public.example.class: Garnet\PublicBundle\Example
+
+services:
+#    garnet_public.example:
+#        class: %garnet_public.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

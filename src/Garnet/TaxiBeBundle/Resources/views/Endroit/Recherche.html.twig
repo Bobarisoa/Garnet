@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+{% block mainClass %}recherche{% endblock %}
+{% block body -%}
+    <form id="formSearch" action="{{ path('taxibe_resultat_recherche') }}">
+        <fieldset>
+            <legend><h2>Rechercher depart et arriver</h2></legend>
+            <div class="relative" style="margin: 20px 0;float: left;">
+                <label for="departVoyage">Depart</label>
+                <input type="hidden" id="depart" name="depart">
+                <input type="text" id="departVoyage" data-src="{{ path('ville_list') }}" autocomplete="off" class="autocomplete">
+                <ul class="autocomplete_list forinput"> </ul>
+            </div>
+            <div class="relative"  style="margin: 20px 0;float: left;">
+                <label for="arriveVoyage">Arrive</label>
+                <input type="hidden" id="arrive" name="arrive">
+                <input type="text" id="arriveVoyage" data-src="{{ path('ville_list') }}" autocomplete="off" class="autocomplete">
+                <ul class="autocomplete_list forinput"> </ul>
+            </div>
+            <div class="btnAction">
+                <button type="submit">Rechercher</button>
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}

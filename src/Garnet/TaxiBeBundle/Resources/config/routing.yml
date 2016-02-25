@@ -1,0 +1,3 @@
+garnet_taxi_be_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: GarnetTaxiBeBundle:Default:index }

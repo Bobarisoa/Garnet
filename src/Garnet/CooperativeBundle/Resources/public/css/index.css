@@ -1,0 +1,373 @@
+.relative{
+    position: relative;
+}
+.fLeft{
+    float: left;
+}
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0px 30px;
+    width: 100%;
+    background: -moz-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(86,211,66,1) 49%, rgba(86,211,66,1) 97%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(210,255,82,1)), color-stop(49%, rgba(86,211,66,1)), color-stop(97%, rgba(86,211,66,1)));
+    background: -webkit-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(86,211,66,1) 49%, rgba(86,211,66,1) 97%);
+    background: -o-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(86,211,66,1) 49%, rgba(86,211,66,1) 97%);
+    background: -ms-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(86,211,66,1) 49%, rgba(86,211,66,1) 97%);
+    background: linear-gradient(to bottom, rgba(210,255,82,1) 0%, rgba(86,211,66,1) 49%, rgba(86,211,66,1) 97%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 );
+}
+article{
+    margin: auto;
+    width: 1010px;
+    border: #002D31 1px solid;
+    margin-top: 10px;
+}
+.banner{
+    margin: 90px auto auto;
+    height: 90px;
+    background: #f38471;
+    width: 970px;
+    background: rgba(210,255,82,1);
+}
+header ul{
+    margin: 0;
+    z-index: 10;
+    text-align: center;
+
+}
+header li{
+    display: inline-block;
+    padding: 10px;
+    font-size: 24px;
+    margin: 0 5px;
+}
+header li:hover{
+    background: -moz-linear-gradient(top, rgb(130, 255, 48) 25%, rgba(86,211,66,1) 49%, rgb(130, 255, 48) 97%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(130, 255, 48,1)), color-stop(49%, rgba(86,211,66,1)), color-stop(97%, rgba(130, 255, 48,1)));
+    background: -webkit-linear-gradient(top, rgba(130, 255, 48) 0%, rgba(86,211,66,1) 49%, rgba(130, 255, 48,1) 97%);
+    background: -o-linear-gradient(top, rgba(130, 255, 48) 0%, rgba(86,211,66,1) 49%, rgba(130, 255, 48,1) 97%);
+    background: -ms-linear-gradient(top, rgba(130, 255, 48) 0%, rgba(86,211,66,1) 49%, rgba(130, 255, 48,1) 97%);
+    background: linear-gradient(to bottom, rgba(130, 255, 48) 0%, rgba(86,211,66,1) 49%, rgba(130, 255, 48,1) 97%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 );
+}
+header li.bg-yellow{
+    background: -moz-linear-gradient(top, rgb(241, 255, 70) 25%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgb(241, 255, 70)), color-stop(49%, rgb(213, 211, 15)), color-stop(97%, rgb(255, 234, 12)));
+    background: -webkit-linear-gradient(top, rgb(241, 255, 70) 0%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    background: -o-linear-gradient(top, rgb(241, 255, 70) 0%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    background: -ms-linear-gradient(top, rgb(241, 255, 70) 0%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    background: linear-gradient(to bottom, rgb(241, 255, 70) 0%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 );
+    border-radius: 0 0 10px 10px;
+    border-right: 1px outset #000;
+    border-left: 1px outset #000;
+    border-bottom: 1px outset #000;
+}
+header li a{
+    color: #f0f0f0;
+    text-decoration: none;
+}
+header li.bg-yellow a{
+    color: #000000;
+}
+li #recherche{
+    width: 400px;
+    height: 30px;
+}
+.vignette{
+    float: left;
+    width: 450px;
+    background: #002D31;
+    margin: 24px;
+    height: 300px;
+}
+.button{
+    clear: both;
+    text-align: center;
+}
+.button a{
+    display: inline-block;
+    width: 50%;
+    color: #fff0f2;
+    background: #006600;
+    font-size: 18px;
+    margin: auto;
+}
+.titre-cooperative {
+     background: #000 none repeat scroll 0 0;
+     color: #888;
+     display: inline-block;
+     margin-left: -184px;
+     opacity: 0.8;
+     vertical-align: super;
+     width: 180px;
+ }
+.vignette .action{
+    color: #ccc;
+    float: right;
+    width: 226px;
+}
+.vignette .action a{
+    color: #fff0f2;
+    font-size: 16px;
+}
+span.description{
+    font-size: 1rem;
+    color: #ffffff;
+}
+.action li{
+    margin-top: 10px;
+}
+.cover {
+    overflow: hidden;
+    height: 300px;
+    text-align: center;
+    background-size: 1010px 301px;
+}
+.fiche-cooperative #menu .onglet-menu{
+    list-style: none;
+    padding-left: 10px;
+    margin-top: 0;
+}
+.fiche-cooperative #menu .onglet-menu li{
+    background: rgba(96,240,88,1);
+    background: -moz-linear-gradient(top, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(147,230,39,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(96,240,88,1)), color-stop(35%, rgb(130, 255, 48)), color-stop(100%, rgba(147,230,39,1)));
+    background: -webkit-linear-gradient(top, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(147,230,39,1) 100%);
+    background: -o-linear-gradient(top, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(147,230,39,1) 100%);
+    background: -ms-linear-gradient(top, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(147,230,39,1) 100%);
+    background: linear-gradient(to bottom, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(147,230,39,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60f058', endColorstr='#93e627', GradientType=0 );
+    border-radius: 0 0 10px 10px;
+    color: #f0f0f0;
+    display: inline-block;
+    font-size: 24px;
+    margin: 0 5px;
+    padding: 10px;
+}
+.fiche-cooperative #menu .onglet-menu li:hover{
+    background: rgba(96,240,88,1);
+    background: -moz-linear-gradient(top, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(42,235,71,1) 62%, rgba(147,230,39,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(96,240,88,1)), color-stop(35%, rgb(130, 255, 48)), color-stop(62%, rgba(42,235,71,1)), color-stop(100%, rgba(147,230,39,1)));
+    background: -webkit-linear-gradient(top, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(42,235,71,1) 62%, rgba(147,230,39,1) 100%);
+    background: -o-linear-gradient(top, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(42,235,71,1) 62%, rgba(147,230,39,1) 100%);
+    background: -ms-linear-gradient(top, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(42,235,71,1) 62%, rgba(147,230,39,1) 100%);
+    background: linear-gradient(to bottom, rgba(96,240,88,1) 0%, rgb(130, 255, 48) 35%, rgba(42,235,71,1) 62%, rgba(147,230,39,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60f058', endColorstr='#93e627', GradientType=0 );
+}
+.fiche-cooperative #menu .onglet-menu li.ui-tabs-active {
+    border-bottom: 1px outset;
+    border-left: 1px solid;
+    color: #000;
+}
+.fiche-cooperative #menu .onglet-menu li a{
+    color: #fff;
+    text-decoration: none;
+}
+.fiche-cooperative #menu .onglet-menu li.ui-tabs-active a{
+    color: #000000;
+}
+.titre_cooperative{
+    background: #afcca3 none repeat scroll 0 0;
+    color: #fff0f2;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+}
+input[type="submit"],
+button[type="submit"]{
+    background: #a6ff8f;
+    border-radius: 3px;
+    padding: 3px;
+}
+#createAnnonce button[type="submit"]{
+    float: right;
+}
+textarea{
+    width: 100%;
+}
+.recherche #formSearch fieldset label,
+.recherche #formSearch input[type="text"],
+.recherche #formSearch select, #savedSearch{
+    display: inline-block;
+    width: 294px;
+    height: 30px;
+}
+.recherche #formSearch fieldset label{
+    text-align: right;
+    width: 128px;
+}
+fieldset{
+    padding: 25px;
+}
+#formSearch{
+    margin: 20px;
+}
+.fieldItem{
+    margin: 5px;
+    position: relative;
+}
+.formBloc{
+    padding: 10px 20px;
+}
+.formBloc label {
+    display: inline-block;
+    width: 200px;
+}
+.formBloc input{
+    display: inline-block;
+    width: 400px;
+    height: 30px;
+}
+.formBloc textarea {
+    display: inline-block;
+    width: 400px;
+}
+.autocomplete_list{
+    display: none;
+    position: absolute;
+    width: 366px;
+    top: 20px;
+    left: 205px;
+    list-style: none;
+    background: #d1e2c0;
+    padding-left: 0;
+    z-index: 4;
+}
+.autocomplete_list li{
+    padding: 10px 0 10px 40px;
+    border: 1px ridge #818181;
+    cursor: pointer;
+}
+.itemTrajet{
+    background: #afcca3;
+    padding: 2px;
+    border: 1px solid;
+    display: inline-block;
+    margin: 2px;
+}
+.itemTrajet a{
+    text-decoration: none;
+}
+.readonly{
+    border: none;
+}
+.mes_voyages{
+    float: left;
+    width: 280px;
+    border: 2px inset darkgray;
+    padding: 5px;
+    margin: 5px 10px;
+    height: 200px;
+}
+.mes_voyages .titre{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+.mes_voyages label{
+    width: 140px;
+    font-weight: bold;
+}
+#ajouter{
+    text-align: center;
+    margin-bottom: 10px;
+}
+#ajouter a {
+    display: inline-block;
+    width: 200px;
+    background: #006600;
+    color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    padding: 6px;
+}
+.wrapperDetail{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.displayDetail{
+    width: 860px;
+    margin: auto;
+    background: #006600;
+    margin-top: 7%;
+    border-radius: 30px;
+    padding: 20px;
+}
+.displayDetail table.place{
+    margin: 20px;
+    padding-top: 20px;
+    float: left;
+}
+.displayDetail table.place td{
+    width: 75px;
+    height: 75px;
+    background: #ffffff;
+}
+.wrapperDetail .displayDetail fieldset,
+.wrapperDetail .displayDetail form{
+    background: #ffffff;
+    opacity: 1;
+    margin: 30px;
+}
+.btnAction{
+    text-align: center;
+}
+div.btnAction button{
+    margin: 10px 5%;
+    display: inline-block;
+    width: 26%;
+    padding: 5px 2px;
+    font-weight: bold;
+}
+#voyage_datevoyage{
+    display: inline-block;
+    width: 400px;
+}
+
+#voyage_datevoyage select {
+    display: inline-block;
+    font-size: 15px;
+    height: 30px;
+    margin: 5px;
+    min-width: 100px;
+}
+.vignette-cooperative{
+    padding: 5px 10px;
+    border: 2px outset;
+    background: #F0FBF0;
+    margin: 5px 10px;
+}
+.vignette-cooperative h3{
+    text-align: center;
+    margin: 10px 0 0;
+}
+.vignette-cooperative label{
+    font-weight: bold;
+}
+.vignette-cooperative p{
+    margin: 6px;
+}
+#formInscription{
+    width: 360px;
+    margin: auto;
+    border-radius: 10px;
+    border: 2px outset;
+    padding: 5px;
+}
+#formInscription label{
+    display: inline-block;
+    width: 100px;
+}
+#formInscription .titre{
+    font-size: 20px;
+    color: #3ED83E;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    text-align: center;
+}

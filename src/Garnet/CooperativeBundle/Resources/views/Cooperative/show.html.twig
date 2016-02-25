@@ -1,0 +1,70 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <main class="fiche-cooperative">
+        <section class="cover" style="background-image: url('{{ asset('/noucoz/web/bundles/garnetcooperative/images/cover.jpg') }}')">
+            <img width="180" src="{{ asset('bundles/garnetcooperative/images/pas_photo.png') }}">
+        </section>
+        <h2 class="titre_cooperative">
+            {{ entity.nom }}
+            <span class="description">({{ entity.description }}) </span>
+        </h2>
+        <div id="menu">
+            <ul class="onglet-menu">
+                <li>Ses Voyages</li>
+                <li>Ses infos</li>
+                <li>Ses photos</li>
+                <li>Ses programmes</li>
+                <li>Ses fans</li>
+                <li style="float: right">...</li>
+            </ul>
+        </div>
+    </main>
+    <table style="width: 100%">
+        <tr>
+            <td style="width: 40%">
+                <div>
+                    <p>Numero téléphone:</p>
+                    <p>Email</p>
+                    <p>Trajet :
+                        {% for trajet in trajets %}
+                            <span id="trajet_{{ trajet['ID_VILLE'] }}">{{ trajet['NOM_VILLE'] }}</span>
+                        {% endfor %}
+                    </p>
+                    <p></p>
+                </div>
+            </td>
+            <td  style="width: 60%">
+                <div>
+                    <fieldset id="newAnnonce">
+                        {# render "GarnetCooperativeBundle:Annonce:new" #}
+                        <legend> Nouvelle annonce</legend>
+                        <form id="createAnnonce" action="{{ path('annonce_create', {id: entity.id}) }}" method="post" {{ form_enctype(form) }}>
+                            {{ form_row(form.textAnnonce) }}
+                            {{ form_rest(form) }}
+                        </form>
+                    </fieldset>
+                    <fieldset>
+                        <legend> Date 12/12/12</legend>
+                        Loren ipsum amet sit amet Loren ipsum amet sit amet Loren ipsum amet sit amet
+                    </fieldset>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('cooperative') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('cooperative_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

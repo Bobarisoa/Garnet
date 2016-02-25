@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+{% block mainClass %}recherche{% endblock %}
+{% block body -%}
+    <h2>
+        Recherche spécifique
+    </h2>
+    <h3 style="text-align: center">
+        <label>Mes recherches sauvegardés</label>
+        <select id="savedSearch">
+            <option>Selectionner</option>
+        </select>
+        <input type="submit" value="OK">
+    </h3>
+    <form id="formSearch" action="{{ path('cooperative_resultat_recherche') }}">
+        <div style="text-align: center">
+            <label>Recherche par cooperative</label>
+            <input type="text" id="nom_cooperative" placeholder="Nom ou description">
+        </div>
+        <fieldset>
+            <legend>
+                Deplacement :
+            </legend>
+            <p>
+                <label for="date_voyage">Date voyage</label>
+                <input type="text" id="date_voyage" class="datepicker" name="date">
+                <label for="place">Place libre</label>
+                <input type="text" id="place" name="place">
+            </p>
+            <div class="relative" style="margin: 20px 0;float: left;">
+                <label for="departVoyage">Depart</label>
+                <input type="hidden" id="depart" name="depart">
+                <input type="text" id="departVoyage" data-src="{{ path('ville_list') }}" autocomplete="off" class="autocomplete">
+                <ul class="autocomplete_list forinput"> </ul>
+            </div>
+            <div class="relative"  style="margin: 20px 0;float: left;">
+                <label for="arriveVoyage">Arrive</label>
+                <input type="hidden" id="arrive" name="arrive">
+                <input type="text" id="arriveVoyage" data-src="{{ path('ville_list') }}" autocomplete="off" class="autocomplete">
+                <ul class="autocomplete_list forinput"> </ul>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>
+                Frais de deplacement :
+            </legend>
+            <label for="frais_minimum">Minimum</label>
+            <input type="text" id="frais_minimum" name="frais_minimum"/>
+            <label for="frais_maximum"> Maximum</label>
+            <input type="text" id="frais_maximum" name="frais_maximum">
+        </fieldset>
+        <fieldset>
+            <legend>Type de Zone :</legend>
+            <label for="regionale">Zone regional</label><input type="radio" name="zone" id="regionale">
+            <label for="nationale">Zone National</label><input type="radio" name="zone" id="nationale">
+        </fieldset>
+        <div style="padding: 10px 20px">
+            <label for="saveSearch" style="width: inherit"><b>Sauvegarder ma recherche</b></label>
+            <input type="text" id="saveSearch" name="saveSearch">
+            <input type="submit" value="Rechercher">
+        </div>
+    </form>
+{% endblock %}

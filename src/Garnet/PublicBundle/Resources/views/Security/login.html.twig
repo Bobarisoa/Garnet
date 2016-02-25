@@ -1,0 +1,27 @@
+{% extends "::layout.html.twig" %}
+{% block content %}
+    {# S'il y a une erreur, on l'affiche dans un joli cadre #}
+    {% if error %}
+        <div class="alert alert-error">{{ error.message }}</div>
+    {% endif %}
+    {# Le formulaire, avec URL de soumission vers la route «
+    login_check » comme on l'a vu #}
+    <form action="{{ path('login_check') }}" method="post" id="formInscription">
+        <h1 class="titre">
+            Authentification membre
+        </h1>
+        <p>
+            <label for="username">Login :</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" />
+        </p>
+        <p>
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="_password" />
+        </p>
+        <br />
+        <div class="btnAction">
+            <button type="submit"><i class="fa fa-sign-in" style="float: left"></i> &nbsp;Connexion</button>
+            <a href="{{ path('compte_register') }}">Inscrivez ici</a>
+        </div>
+    </form>
+{% endblock %}

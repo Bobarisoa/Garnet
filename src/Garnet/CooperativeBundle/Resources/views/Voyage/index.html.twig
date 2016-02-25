@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Voyage list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datevoyage</th>
+                <th>Idcooperative</th>
+                <th>Nbrplace</th>
+                <th>Heuredepart</th>
+                <th>Description</th>
+                <th>Frais</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('voyage_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{% if entity.dATEVOYAGE %}{{ entity.dATEVOYAGE|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.iDCOOPERATIVE }}</td>
+                <td>{{ entity.nBRPLACE }}</td>
+                <td>{{ entity.dESCRIPTION }}</td>
+                <td>{{ entity.fRAIS }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('voyage_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('voyage_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('voyage_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

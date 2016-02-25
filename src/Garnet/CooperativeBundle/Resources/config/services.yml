@@ -1,0 +1,7 @@
+parameters:
+#    garnet_cooperative.example.class: Garnet\CooperativeBundle\Example
+
+services:
+#    garnet_cooperative.example:
+#        class: %garnet_cooperative.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,7 @@
+parameters:
+#    garnet_taxi_be.example.class: Garnet\TaxiBeBundle\Example
+
+services:
+#    garnet_taxi_be.example:
+#        class: %garnet_taxi_be.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

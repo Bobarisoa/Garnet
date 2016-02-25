@@ -1,0 +1,77 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <section class="cover" style="background-image: url('{{ asset('/noucoz/web/bundles/garnetcooperative/images/cover.jpg') }}')">
+        <img width="180" src="{{ asset('bundles/garnetcooperative/images/pas_photo.png') }}">
+    </section>
+    <h2 class="titre_cooperative">
+        {{ entity.nom }}
+        <span class="description">({{ entity.description }}) </span>
+    </h2>
+    <div id="menu">
+        <ul class="onglet-menu">
+            <li>
+                <a href="#mesVoyages">Nos voyages</a>
+            </li>
+            <li>
+                <a href="#details">Mes détails</a>
+            </li>
+            <li>
+                <a href="#gestion">Gestion</a>
+            </li>
+        </ul>
+        <section id="mesVoyages" class="formBloc">
+            <div id="ajouter">
+                <a href="{{ path('voyage_create', {'id': entity.id}) }}">
+                    <span>Nouvelle Voyage</span>
+                </a>
+            </div>
+            {% for voyage in voyages %}
+                <div class="mes_voyages">
+                    <p class="titre">Voyage le {{ voyage.dateVoyage|date('d/m/Y') }}</p>
+                    <label>Nombre de Place :</label><span> {{ voyage.nbrPlace }}</span><br/>
+                    <label>Heure de Depart :</label><span> {{ voyage.dateVoyage|date('H:i') }}</span><br/>
+                    <label>Place libre :</label><span> {{ voyage.nbrPlace }}</span><br/>
+                    <label>Description:</label><span> {{ voyage.description }}</span><br/>
+                    <p style="text-align: center">
+                        <a href="{{ path('voyage_show', {'id': voyage.id}) }}" class="detailAction">Details</a>
+                    </p>
+                </div>
+            {% endfor %}
+            <div style="clear: both"></div>
+        </section>
+        <section id="details" class="formBloc">
+            <div class="fieldItem">
+                <label for="cooperative-name">Changer nom de cooperative</label>
+                <input id="cooperative-name" type="text" class="readonly" value="{{ entity.nom }}">
+                <a href="#" class="modifier">Modifier</a>
+            </div>
+            <div class="fieldItem">
+                <label for="cooeprative_description">Description de votre cooperative</label>
+                <textarea id="cooeprative_description" rows="3" class="readonly">{{ entity.description }}</textarea>
+                <a href="#" class="modifier">Modifier</a>
+            </div>
+            <div class="fieldItem">
+                <table style="width: 100%">
+                    <tr>
+                        <td style="width: 200px"><label for="trajet">Votre trajet</label></td>
+                        <td>
+                            <form action="{{ path('cooperative_new_trajet', {'id': entity.id}) }}" method="POST">
+                                <div id="trajet_container" style="width: 755px;display: inline-block;">
+                                </div>
+                                <input type="hidden" id="trajetId" name="trajetId">
+                                <input type="text" id="trajet" class="autocomplete" data-src="{{ path('ville_list') }}" name="nameVille">
+                                <ul class="autocomplete_list">
+                                </ul>
+                                <input type="submit" value="Valider">
+                            </form>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section id="gestion">
+
+        </section>
+    </div>
+{% endblock %}

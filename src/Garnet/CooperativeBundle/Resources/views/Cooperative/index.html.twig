@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+{% block mainClass %}fiche-cooperative{% endblock %}
+{% block body -%}
+    <h1>Cooperative list</h1>
+        {% for entity in entities %}
+            <div class="vignette">
+                <img src="{{ asset('bundles/garnetcooperative/images/pas_photo.png') }}" width="180">
+                <ul class="action">
+                    <li><a href="#">Ses programmes</a></li>
+                    <li><a href="#">Suivre ses nouvelles</a></li>
+                    <li><a href="{{ path('cooperative_show', { 'id': entity.id }) }}">Plus ...</a></li>
+                </ul>
+                <h2 class="titre-cooperative" >{{ entity.nom }}</h2>
+                <div class="description">
+                    <p>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</p>
+                    <p>{{ entity.description }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    <section class="button" style="clear: both">
+        <a href="#" id="plus-vignette">
+            Afficher plus
+        </a>
+    </section>
+{% endblock %}

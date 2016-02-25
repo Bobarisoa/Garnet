@@ -1,0 +1,25 @@
+{% extends '::base.html.twig' %}
+{% block mainClass %}fiche-cooperative{% endblock %}
+{% block body -%}
+    <h1>Resultat de recherche</h1>
+    {% for voyage in voyages %}
+        <div class="vignette-cooperative">
+            <div class="fLeft" style="margin-right: 20px">
+                <img width="150px" height="150px"  src="{{ asset('bundles/garnetcooperative/images/pas_photo.png') }}">
+            </div>
+            <div class="">
+                <h3>{{ voyage['NOM'] }}</h3>
+                <hr/>
+                <p> <label>Date de voyage</label>
+                    {{ voyage['DATE_VOYAGE']|date('d/m/Y') }} à
+                    {{ voyage['DATE_VOYAGE']|date('h:i') }}
+                </p>
+                <p><label>Frais :</label>{{ voyage['FRAIS'] }} Ar</p>
+                <p><label>Nombre de place libre :</label>{{ voyage['NBR_PLACE'] }}</p>
+                <p><label>Lieu de depart :</label>{{ voyage['DEPART'] }}</p>
+                <p><label>Lieu d'arrivé :</label>{{ voyage['ARRIVE'] }}</p>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    {% endfor %}
+{% endblock %}

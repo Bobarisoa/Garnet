@@ -1,0 +1,3 @@
+{% for ville in entities %}
+<li id="ville_{{ ville.id }}" data-value="{{ ville.id }}">{{ ville.nomVille ~ ', ' ~ ville.region }}</li>
+{% endfor %}

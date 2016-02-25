@@ -1,0 +1,41 @@
+
+<h1>Voyage creation</h1>
+<form id="newVoyage" class="formBloc" action="{{ path('voyage_create', {'id': idCoop}) }}" method="post" {{ form_enctype(form) }}>
+        {{ form_label(form.datevoyage) }}
+        {{ form_widget(form.datevoyage) }}
+    <div class="relative">
+        {{ form_row(form.depart) }}
+        <label for="departVoyage"> Depart :</label>
+        <input type="text" id="departVoyage" data-src="{{ path('ville_list') }}" autocomplete="off" class="autocomplete">
+        {{ form_errors(form.depart) }}
+        <ul class="autocomplete_list forinput"> </ul>
+    </div>
+    <div class="relative">
+        {{ form_row(form.arrive) }}
+        <label for="arriveVoyage">Arrivé :</label>
+        <input type="text" id="arriveVoyage" data-src="{{ path('ville_list') }}" autocomplete="off" class="autocomplete">
+        <ul class="autocomplete_list forinput"> </ul>
+    </div>
+    <p>
+        {{ form_label(form.nbrplace) }}
+        {{ form_widget(form.nbrplace) }}
+    </p>
+    <p>
+        {{ form_label(form.description) }}
+        {{ form_widget(form.description) }}
+    </p>
+    <p>
+        {{ form_label(form.frais) }}
+        {{ form_widget(form.frais) }}
+    </p>
+    <div style="clear: both;"></div>
+    <div class="btnAction">
+        <button type="reset" onclick="$('.wrapperDetail').hide()"> Annuler</button>
+        {{ form_row(form.submit) }}
+    </div>
+    <div style="display: none">
+        {{ form_rest(form) }}
+    </div>
+</form>
+
+

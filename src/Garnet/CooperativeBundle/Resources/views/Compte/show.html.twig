@@ -1,0 +1,64 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Compte</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nomuser</th>
+                <td>{{ entity.nomUser }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ entity.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Datenaissance</th>
+                <td>{{ entity.dateNaissance|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Courriel</th>
+                <td>{{ entity.courriel }}</td>
+            </tr>
+            <tr>
+                <th>Telephone</th>
+                <td>{{ entity.telephone }}</td>
+            </tr>
+            <tr>
+                <th>Motdepasse</th>
+                <td>{{ entity.motdePasse }}</td>
+            </tr>
+            <tr>
+                <th>Dateinscription</th>
+                <td>{{ entity.dateInscription|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ entity.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Supprime</th>
+                <td>{{ entity.supprime }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('compte') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('compte_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

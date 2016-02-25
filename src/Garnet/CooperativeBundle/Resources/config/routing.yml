@@ -1,0 +1,3 @@
+garnet_cooperative_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: GarnetCooperativeBundle:Default:index }
