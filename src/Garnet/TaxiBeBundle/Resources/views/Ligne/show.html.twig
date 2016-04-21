@@ -1,36 +1,17 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Ligne</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Numero</th>
-                <td>{{ entity.numero }}</td>
-            </tr>
-            <tr>
-                <th>Libelle</th>
-                <td>{{ entity.libelle }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ligne') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('ligne_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    <div class="titreBus">
+        <img width="200" src="{{ asset('bundles/garnettaxibe/images/bus/'~ entity.numero|replace({'A': '', 'B': '','C': ''}) ~ '.png') }}">
+        <h1>Detail sur la ligne {{ entity.numero }} </h1>
+        <h2>{{ entity.libelle }}</h2>
+        <div style="clear: both"></div>
+    </div>
+    <div>
+       <ul style="margin-left: 80px">
+           {% for trajet in trajets %}
+               <li>{{ trajet['LIBELLE'] }}</li>
+           {% endfor %}
+       </ul>
+    </div>
 {% endblock %}

@@ -109,8 +109,9 @@ class LigneController extends Controller
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('GarnetTaxiBeBundle:Ligne')->find($id);
+        $ligneRepository = $em->getRepository('GarnetTaxiBeBundle:Ligne');
+        $entity = $ligneRepository->find($id);
+        $trajets = $ligneRepository->getTrajetByLigne($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Ligne entity.');
@@ -119,6 +120,7 @@ class LigneController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
+            'trajets' => $trajets,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         );
@@ -146,9 +148,24 @@ class LigneController extends Controller
 
         return array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
+    }
+
+    /**
+     * Ajouter des trajets
+     * @Route("/addtrajet/{id}", name="ligne_new_trajet")
+     */
+    public function addTrajet($id){
+        $request = $this->get('request');
+        $trajetIds = explode('_', $request->get('trajetId'));
+        $trajetIds = array_unique($trajetIds);
+        $_query = "INSERT IGNORE INTO trajetbus VALUES (". $id . ", ". implode("), (" . $id . ", ", $trajetIds) . " )";
+        $stmt = $this->getDoctrine()->getEntityManager()->getConnection()->prepare($_query);
+        $stmt->execute();
+
+        return $this->redirect($this->generateUrl('ligne_show', array('id' => $id)));
     }
 
     /**

@@ -1,0 +1,43 @@
+{% extends '::layout.html.twig' %}
+{% block content %}
+    <header>
+        <ul>
+            <li class="active" ><a href="{{ path('cooperative') }}"><i class="fa fa-home"></i>Accueil</a></li>
+            <li> <a href="{{ path('cooperative_recherche') }}"><i class="fa fa-search"></i>Recherche</a></li>
+            <li> <a href="{{ path('cooperative_recherche') }}"><i class="fa fa-users"></i>Communaute</a></li>
+            <li> <a href="{{ path('taxibe_recherche') }}"><i class="fa fa-bus"></i>TaxiBe</a></li>
+            <li> <a href="{{ path('ligne') }}"><i class="fa fa-bus"></i>Editer Bus</a></li>
+            <li><input id="recherche" name="recherche"></li>
+            {% if app.user.username is defined %}
+                <li>
+                    <a href="{{ path('cooperative_edit', {'id': 1}) }}">
+                        <i class="fa fa-user"></i>
+                        {{ app.user.username }}
+                        <i class="fa fa-caret-down"></i>
+                    </a>
+                </li>
+            {% else %}
+                <li class="bg-yellow">
+                    <a href="{{ path('compte_register') }}">
+                        Inscription
+                    </a>
+                </li>
+            {% endif %}
+
+        </ul>
+    </header>
+    <section class="banner">
+
+    </section>
+    <article>
+        <main class="{% block mainClass %}fiche-cooperative{% endblock %}">
+            {% block body -%}
+            {% endblock %}
+        </main>
+        <div class="wrapperDetail">
+            <div class="displayDetail">
+
+            </div>
+        </div>
+    </article>
+{% endblock %}

@@ -15,7 +15,7 @@ use Garnet\TaxiBeBundle\Form\EndroitType;
  *
  * @Route("/taxibe")
  */
-class EndroitController extends Controller
+class TaxiBeController extends Controller
 {
 
     /**
@@ -23,12 +23,32 @@ class EndroitController extends Controller
      *
      * @Route("/", name="taxibe_recherche")
      * @Method("GET")
-     * @Template()
      */
     public function rechercheAction(){
+        $em = $this->getDoctrine()->getManager();
+        $depart = intval($this->getRequest()->get('depart'));
+        $arrive = intval($this->getRequest()->get('arrive'));
+        $intermediare = false;
+        if($depart != 0 && $arrive == 0){
+            $lignes = $em->getRepository('GarnetTaxiBeBundle:Ligne')->searchByEndroit($depart);
+        }elseif($arrive != 0 && $depart != 0){
+            $lignes = $em->getRepository('GarnetTaxiBeBundle:Ligne')->searchByDestdepart($depart, $arrive);
+            if(count($lignes) == 0){
+                $lignes = $em->getRepository('GarnetTaxiBeBundle:Ligne')->searchIntermediare($depart, $arrive);
+                $intermediare = true;
+                //var_dump($lignes);die;
+            }
+        }else{
+            $lignes = $em->getRepository('GarnetTaxiBeBundle:Ligne')->getLigneHasard();
+        }
 
-        return $this->render("GarnetTaxiBeBundle:Endroit:Recherche.html.twig");
+
+        return $this->render("GarnetTaxiBeBundle:TaxiBe:Recherche.html.twig", array(
+            'lignes'=>$lignes,
+            'intermediare' =>$intermediare
+        ));
     }
+
     /**
      * Lists all Endroit entities.
      *
@@ -36,14 +56,14 @@ class EndroitController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function indexAction()
+    public function listByNameAction()
     {
         $em = $this->getDoctrine()->getManager();
         $request = $this->get('request');
         $name = $request->get('nameVille');
         $entities = $em->getRepository('GarnetTaxiBeBundle:Endroit')->listByName($name);
 
-        return $this->render('GarnetCooperativeBundle:Common:autocomplete.html.twig', array(
+        return $this->render('GarnetTaxiBeBundle:Common:autocomplete.html.twig', array(
             'entities' => $entities
         ));
     }
@@ -52,7 +72,7 @@ class EndroitController extends Controller
      *
      * @Route("/", name="endroit_create")
      * @Method("POST")
-     * @Template("GarnetTaxiBeBundle:Endroit:new.html.twig")
+     * @Template("GarnetTaxiBeBundle:TaxiBe:new.html.twig")
      */
     public function createAction(Request $request)
     {

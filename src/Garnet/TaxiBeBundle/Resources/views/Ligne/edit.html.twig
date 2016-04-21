@@ -1,32 +1,36 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Ligne edit</h1>
-    <form id="newVoyage" class="formBloc" action="{{ path('voyage_create', {'id': idCoop}) }}" method="post" {{ form_enctype(form) }}>
-        {{ form_row(form.numero) }}
-        {{ form_row(form.numero) }}
-        <div class="relative">
-            <label for="departVoyage"> Depart :</label>
-            <input type="text" id="departVoyage" data-src="{{ path('endroit_list') }}" autocomplete="off" class="autocomplete">
-            <ul class="autocomplete_list forinput"> </ul>
-        </div>
-        <div style="display: none">
-            {{ form_rest(form) }}
-        </div>
-    </form>
-
-
-
-
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('ligne') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+<div class="fieldItem">
+    <div class="titreBus">
+        <img width="200" src="{{ asset('bundles/garnettaxibe/images/bus/'~ entity.numero|replace({'A': '', 'B': '','C': ''}) ~ '.png') }}">
+        <h1>Editer la ligne {{ entity.numero }} </h1>
+        <h2>{{ entity.libelle }}</h2>
+        <div style="clear: both"></div>
+    </div>
+    <table style="width: 100%">
+        <tr>
+            <td style="width: 200px"><label for="trajet">Ajouter des trajets</label></td>
+            <td>
+                <form action="{{ path('ligne_new_trajet', {'id': entity.id}) }}" method="POST" class="formBloc">
+                    <div class="relative">
+                        <div id="trajet_container" style="width: 755px;display: inline-block;">
+                        </div>
+                        <input type="hidden" id="trajetId" name="trajetId">
+                        <input type="text" id="departVoyage" data-src="{{ path('endroit_list') }}" autocomplete="off" class="autocomplete">
+                        <ul class="autocomplete_list"> </ul>
+                    </div>
+                    <input type="submit" value="Valider">
+                </form>
+            </td>
+        </tr>
+    </table>
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('ligne') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+    {% endblock %}

@@ -14,8 +14,8 @@ class EndroitRepository extends EntityRepository
 {
     public function listByName($name = null){
         $query = $this->createQueryBuilder('e')
-            ->where('v.libelle like \'' . $name . '%\'')
-            ->setMaxResults('5')
+            ->where('e.libelle like \'' . $name . '%\'')
+            ->setMaxResults('10')
             ->getQuery()
             ->getResult();
 

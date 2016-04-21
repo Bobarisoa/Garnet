@@ -12,4 +12,78 @@ use Doctrine\ORM\EntityRepository;
  */
 class LigneRepository extends EntityRepository
 {
+    /**
+     * Lister la trajet d'un bus
+     * @param $idLigne
+     * @return array
+     */
+    public function getTrajetByLigne($idLigne){
+        $query = "SELECT e.LIBELLE ,t.ENDROIT FROM trajetbus t INNER JOIN endroit e ON t.ENDROIT = e.ID_ENDROIT WHERE LIGNE = '". $idLigne . "' ";
+        $stmt = $this->getEntityManager()->getConnection()->prepare($query);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    public function getLigneHasard(){
+        $_query = "SELECT l.* FROM ligne l ORDER BY RAND() LIMIT 5";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($_query);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+
+    /**
+     * Lister les ligne par lieu de depart et arrivé
+     *
+     * @param $depart
+     * @param $arrive
+     * @return array
+     */
+    public function searchByDestdepart($depart, $arrive){
+        $_query = "SELECT l.* FROM ligne l
+            INNER JOIN trajetbus t1 ON t1.LIGNE = l.ID_LIGNE
+            INNER JOIN trajetbus t2 ON t2.LIGNE = l.ID_LIGNE
+            WHERE t1.ENDROIT = '" . $depart . "' AND t2.ENDROIT = '" .$arrive . "'";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($_query);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+    /**
+     * Lister les lignes passant dans un lieu
+     *
+     * @param $depart
+     * @return array
+     */
+    public function searchByEndroit($depart){
+        $_query = "SELECT l.* FROM ligne l
+            INNER JOIN trajetbus t1 ON t1.LIGNE = l.ID_LIGNE
+            WHERE t1.ENDROIT = '" . $depart . "'";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($_query);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
+
+    public function  searchIntermediare($depart, $arrive){
+        $_query = "SELECT DISTINCT l.*, l2.*, GROUP_CONCAT(en.LIBELLE) AS CHANGE_BUS FROM ligne l
+            INNER JOIN trajetbus t1 ON t1.LIGNE = l.ID_LIGNE
+            INNER JOIN trajetbus t2 ON t2.LIGNE = l.ID_LIGNE
+            INNER JOIN trajetbus t3 ON t3.ENDROIT = t2.ENDROIT
+            INNER JOIN ligne l2 ON t3.LIGNE = l2.ID_LIGNE
+            INNER JOIN trajetbus t4 ON t4.LIGNE = l2.ID_LIGNE
+            INNER JOIN ENDROIT en ON en.ID_ENDROIT = t2.ENDROIT
+            WHERE t1.ENDROIT = $depart  AND t4.ENDROIT = $arrive
+            GROUP BY l.ID_LIGNE, l2.ID_LIGNE";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($_query);
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_NUM);
+    }
 }

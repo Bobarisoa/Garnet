@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+{% block mainClass %}recherche{% endblock %}
+{% block body -%}
+    <form id="formSearch">
+        <fieldset>
+            <legend><h2>Rechercher depart et arriver</h2></legend>
+            <div class="relative" style="float: left;">
+                <label for="departVoyage">Passant par</label>
+                <input type="hidden" id="depart" name="depart">
+                <input type="text" id="departVoyage" data-src="{{ path('endroit_list') }}" autocomplete="off" class="autocomplete">
+                <ul class="autocomplete_list forinput"> </ul>
+            </div>
+            <div class="relative" id="arriverEndroit"  style="float: left; display: none">
+                <label for="arriveVoyage">Arrive</label>
+                <input type="hidden" id="arrive" name="arrive">
+                <input type="text" id="arriveVoyage" data-src="{{ path('endroit_list') }}" autocomplete="off" class="autocomplete">
+                <ul class="autocomplete_list forinput"> </ul>
+            </div>
+            <a href="javascript:void(0);" id="toogleArrive"><i class="fa fa-plus"></i>Ajouter arriver</a>
+            <button type="submit">OK</button>
+        </fieldset>
+    </form>
+    <div>
+        {% if intermediare is sameas(true) %}
+            <h3>Des ligne indirects avec l'endroit de transbordement</h3>
+            {% for entity in lignes %}
+                <div class="associate">
+                    <h4>{{ entity['8'] }} </h4>
+                    <div class="titreBus">
+                        <a href="{{ path('ligne_show', { 'id': entity['0'] }) }}">
+                            <img width="200" src="{{ asset('bundles/garnettaxibe/images/bus/'~ entity['1']|replace({'A': '', 'B': '','C': ''}) ~ '.png') }}">
+                        </a>
+                        <h1>Ligne {{ entity['1'] }} </h1>
+                        <h2>{{ entity['2'] }}</h2>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="titreBus">
+                        <a href="{{ path('ligne_show', { 'id': entity['4'] }) }}">
+                            <img width="200" src="{{ asset('bundles/garnettaxibe/images/bus/'~ entity['5']|replace({'A': '', 'B': '','C': ''}) ~ '.png') }}">
+                        </a>
+                        <h1>Ligne {{ entity['5'] }} </h1>
+                        <h2>{{ entity['6'] }}</h2>
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="clear-fix"></div>
+                </div>
+            {% endfor %}
+        {% else %}
+            {% for entity in lignes %}
+                <div class="titreBus">
+                    <a href="{{ path('ligne_show', { 'id': entity['ID_LIGNE'] }) }}">
+                        <img width="200" src="{{ asset('bundles/garnettaxibe/images/bus/'~ entity['NUMERO']|replace({'A': '', 'B': '','C': ''}) ~ '.png') }}">
+                    </a>
+                    <h1>Ligne {{ entity['NUMERO'] }} </h1>
+                    <h2>{{ entity['LIBELLE'] }}</h2>
+                    <div style="clear: both"></div>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+    </div>
+{% endblock %}

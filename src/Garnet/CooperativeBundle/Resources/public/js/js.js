@@ -6,7 +6,7 @@ $(function(){
         var href = $(this).data('src');
         var data = $(this).val();
         var elm = $(this);
-        if(data.length>2)
+        if(data.length>=2)
             $.ajax({
                 type: 'GET',
                 url: href,
@@ -48,6 +48,10 @@ $(function(){
         displayDialog($(this));
     });
     $('.datepicker').datepicker();
+    $('#toogleArrive').click(function(){
+        $(this).hide();
+        $('#arriverEndroit').fadeToggle();
+    })
 });
 function displayDialog(elem){
     var href = elem.attr('href');

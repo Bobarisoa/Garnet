@@ -192,12 +192,18 @@ textarea{
 .recherche #formSearch input[type="text"],
 .recherche #formSearch select, #savedSearch{
     display: inline-block;
-    width: 294px;
+    width: 270px;
     height: 30px;
 }
 .recherche #formSearch fieldset label{
     text-align: right;
-    width: 128px;
+    width: 120px;
+}
+.recherche #formSearch button{
+    width: 40px;
+    height: 40px;
+    margin-left: 35px;
+    display: inline-block;
 }
 fieldset{
     padding: 25px;
@@ -228,9 +234,9 @@ fieldset{
 .autocomplete_list{
     display: none;
     position: absolute;
-    width: 366px;
-    top: 20px;
-    left: 205px;
+    width: 280px;
+    top: 25px;
+    left: 120px;
     list-style: none;
     background: #d1e2c0;
     padding-left: 0;
@@ -370,4 +376,45 @@ div.btnAction button{
     color: #3ED83E;
     font-family: Georgia, "Times New Roman", Times, serif;
     text-align: center;
+}
+.titreBus{
+    margin: auto;
+    width: 90%;
+    border-radius: 30px;
+    padding: 0 30px;
+    margin-top: 25px;
+}
+.associate .titreBus{
+    width: 40%;
+    float: left;
+    height: 150px;
+    margin-left: 4%;
+}
+.associate .titreBus:first-child{
+    margin-left: 0;
+}
+.associate h4{
+    text-align: center;
+    background: -moz-linear-gradient(top, rgb(241, 255, 70) 25%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgb(241, 255, 70)), color-stop(49%, rgb(213, 211, 15)), color-stop(97%, rgb(255, 234, 12)));
+    background: -webkit-linear-gradient(top, rgb(241, 255, 70) 0%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    background: -o-linear-gradient(top, rgb(241, 255, 70) 0%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    background: -ms-linear-gradient(top, rgb(241, 255, 70) 0%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    background: linear-gradient(to bottom, rgb(241, 255, 70) 0%, rgb(213, 211, 15) 49%, rgb(255, 234, 12) 97%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#91e842', GradientType=0 );
+    padding: 5px 0;
+    margin: 0;
+}
+.titreBus img{
+    float: right;
+}
+.titreBus h1{
+    margin: 0 -30px;
+    padding: 20px;
+    border-radius: 30px 30px;
+    border-bottom: 5px dashed #006600;
+    background: #71ff8b;
+}
+.clear-fix{
+    clear: both;
 }
